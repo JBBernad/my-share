@@ -95,26 +95,26 @@ Create a sale transaction entry in Dynamics 365 Busines Central
 
 Field Name | Description | Note
 --- | --- |--- |
-transactionGroupCode | A unique code to identify the type of transaction be created within BC using the other setup fields| Mandatory Code 20 |
-documentNo | Business Central Document No. Grouping Code for lines| Mandatory Code 20 |
+transactionGroupCode | A unique code to identify the type of transaction be created within BC using the other setup fields| **Mandatory** Code 20 |
+documentNo | Business Central Document No. Grouping Code for lines| **Mandatory** Code 20 |
 externalDocumentNo | External Document No.| Code 35 |
-documentLineNo | Line No. | Mandatory Integer |
-customerNo | Business Central Customer No.| Mandatory Code 20|
-documentDate | Document Date |  |
-lineType | Specifies the type of transaction that will be posted with the document line.Values: G/L Account; Item; Resource| Mandatory Enum |
-no | G/L Account No. Or Item No. Or Resource No. | Mandatory Code 20|
-quantity | Quantity | Decimal |
-description | Specifies a description of the entry of the product to be sold. To add a non-transactional text line, fill in the Description field only.| Text 100 |
-unitPrice | Specifies the price for one unit on the sales line| |
-vatProdPostGroup | Specifies the VAT specification of the involved item or resource to link transactions made for this record with the appropriate general ledger account according to the VAT posting setup|  |
-dim1 | Dimension Value 1 for the current transaction.|  |
-dim2 | Dimension Value 2 for the current transaction.|  |
-dim3 | Dimension Value 3 for the current transaction.|  |
-dim4 | Dimension Value 4 for the current transaction.|  |
-dim5 | Dimension Value 5 for the current transaction.|  |
-dim6 | Dimension Value 5 for the current transaction.|  |
-dim7 | Dimension Value 5 for the current transaction.|  |
-dim8 | Dimension Value 5 for the current transaction.|  |
+documentLineNo | Line No. | **Mandatory** Integer |
+customerNo | Business Central Customer No.| **Mandatory** Code 20|
+documentDate | Document Date | Date (YYYY-MM-DD) |
+lineType | Specifies the type of transaction that will be posted with the document line. Values : *G/L Account* *Item* *Resource*| **Mandatory** Enum |
+no | G/L Account No. Or Item No. Or Resource No. | **Mandatory** Code 20|
+quantity | number of unit sold. | Decimal |
+description | Specifies a description of the entry of the product to be sold.| Text 100 |
+unitPrice | Specifies the price for one unit on the line.| Decimal|
+vatProdPostGroup | Specifies the VAT specification of the involved item or resource to link transactions made.| Code 10 |
+dim1 | Dimension Value 1 for the current transaction.| Code 20 |
+dim2 | Dimension Value 2 for the current transaction.| Code 20 |
+dim3 | Dimension Value 3 for the current transaction.| Code 20 |
+dim4 | Dimension Value 4 for the current transaction.| Code 20 |
+dim5 | Dimension Value 5 for the current transaction.| Code 20 |
+dim6 | Dimension Value 5 for the current transaction.| Code 20 |
+dim7 | Dimension Value 5 for the current transaction.| Code 20 |
+dim8 | Dimension Value 5 for the current transaction.| Code 20 |
 
 
 
