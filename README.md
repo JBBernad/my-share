@@ -1,5 +1,6 @@
-# My Project
-is really really cool. My Project has a subdir named myLib, see below.
+# Share Documentation 
 
-## myLib documentation
-External Billing [here](TVisionTech/ExternalBilling.md)
+
+## Integration documentation
+
+[External Billing](TVisionTech/ExternalBilling.md)
