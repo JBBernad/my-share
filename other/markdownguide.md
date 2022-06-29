@@ -76,3 +76,46 @@ Task List
   "age": 25
 }
 ```
+
+
+
+## Sample API Call
+## GET XXX
+
+Retrieve the properties and relationships of a Stock object for Business Central.
+
+### Http Request
+
+Replace the URL endpoint for Dynamics 365 Business Central depending on environment following the [guideline](#endpoints-businesscentralodatav4prefix-structure).
+
+~~~ api
+businesscentralodataV4Prefix/XXX
+~~~
+
+### Request Headers
+
+Header | Value |
+--- | --- |
+Authorization | Bearer {token}. Required.|
+
+### Request Body
+
+Do not supply a request body for this method.
+
+### Response
+
+Here is an example of the response
+
+```json
+{
+  "value": [
+   
+    ]
+}
+```
+
+### XXX Fields
+
+| Relation | Source Table | Field Caption | Field Type | Field Lenght | Note      |
+| ----------- | ----------- | ----------- | ---------- | ------------ |---------- |
+|  1          | XXX         | XXX         |  String    | 20           | Primary Key Field SKU Code|

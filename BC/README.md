@@ -24,9 +24,16 @@ The articles in this section describe the key concepts and techniques for using 
 
 The Open Data Protocol (OData) is a web protocol that is designed for querying tabular data and provides you with an alternative to SOAP-based web services. OData builds on web technologies such as HTTP and JavaScript Object Notation (JSON) to provide access to information from different applications, services, and stores. OData uses URIs for resource identification and commits to an HTTP-based, uniform interface for interacting with resources. This commitment to core Web principles allows for OData to enable a new level of data integration and interoperability across a broad range of clients, servers, services, and tools.
 
+### $Expand statement
+~~~ api
+https://api.businesscentral.dynamics.com/<API Version>/<user domain name>/<Enviroment Name>/ODataV4/Company('<Company Namme>')
+~~~
+
 [OData Web Services MS Docs](https://docs.microsoft.com/en-us/dynamics365/business-central/dev-itpro/webservices/odata-web-services)
 
----
+[OData Filter expressions MS Docs](https://docs.microsoft.com/en-us/dynamics365/business-central/dev-itpro/webservices/use-filter-expressions-in-odata-uris)
+
+--
 ## SOAP
 
 SOAP web services enable full flexibility for building operation-centric services. They provide industry-standard interoperability and channel and host pluggability.

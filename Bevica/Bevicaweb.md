@@ -7,11 +7,11 @@
 | [Customer](#get-customers) | Customer Info and Ship Addresses | BC -> Web | Read | |
 | [Product](#get-products) | Items and Attributes | BC -> Web | Read | |
 | [Stock](#get-stock) | Stock Available  | BC -> Web | Read | |
-| Web Order    | Create Web Order and Lines in BC | Web->BC    | Read Create | |
-| Sales Prices | Plain List of Sales Prices| BC -> Web | Read | |
-| Payments | Create Payment on Paym. Journal in BC | Web->BC | Create | |
-| Manifest | Shipping Manifest Status | BC -> Web | Read | |
-| Orders Status | List of Orders with Tracking updates | BC -> Web | Read | |
+| [Web Order](#create-web-order) | Create Web Order and Lines in BC | Web->BC    | Read Create | |
+| [Payments](#create-payment) | Create Payment on Paym. Journal in BC | Web->BC | Create | |
+| [Manifest](#get-manifest) | Shipping Manifest Status | BC -> Web | Read | |
+| [Orders Status](#get-orders-status) | List of Orders with Tracking updates | BC -> Web | Read | |
+| [Sales Prices](#get-sales-prices) | Plain List of Sales Prices| BC -> Web | Read | |
 | SOAP Real Time Functions| Library of function to consume with SOAP Calls | BC -> Web | Read | |
 
 ## Endpoints businesscentralodataV4Prefix structure
@@ -27,6 +27,10 @@ Sample
 ~~~ api
 https://api.businesscentral.dynamics.com/v2.0/bevicasaas.onmicrosoft.com/Production/ODataV4/Company('Bevica%20Web%20Integration')
 ~~~
+
+## Endpoints businesscentralodataV4Prefix structure
+
+
 
 ## GET Customers
 
@@ -479,14 +483,580 @@ Here is an example of the response
 
 | Relation | Source Table | Field Caption | Field Type | Field Lenght | Note |
 | ----------- | ----------- | ----------- | -------- | ---------- |---------- |
-|  1  |  Group_Code  |  String  |
-|  1  |  Item_No  |  String  |
-|  1  |  Variant_Code  |  String  |
-|  1  |  Unit_of_Measure_Code  |  String  |
-|  1  |  Location_Code  |  String  |
-|  1  |  Qty_per_Unit_of_Measure  |  Decimal  |
-|  1  |  Stock_Available_Base  |  Decimal  |
-|  1  |  Last_Mod_Date_Time  |  Date Time  |
+|  1  | Web Stock| Item_No  |  String  | 20 | Primary Key Field SKU Code|
+|  1  | Web Stock| Variant_Code  |  String  | 10 | Primary Key Field Duty Status|
+|  1  | Web Stock| Unit_of_Measure_Code  |  String  | 10 | Primary Key Field UoM|
+|  1  | Web Stock| Location_Code  |  String  |  10 | Primary Key Field Location |
+|  1  | Web Stock| Group_Code  |  String  | 50 | Primary Key Field (Not Used)|
+|  1  | Web Stock| Qty_per_Unit_of_Measure  |  Decimal  | |
+|  1  | Web Stock| Stock_Available_Base  |  Decimal  | Stock Available |
+|  1  | Web Stock| Last_Mod_Date_Time  |  Date Time  || Last Mod. Date Time|
+
+
+
+## Create Web Order
+
+Retrieve the properties and relationships of a Stock object for Business Central.
+
+### Http Request
+
+Replace the URL endpoint for Dynamics 365 Business Central depending on environment following the [guideline](#endpoints-businesscentralodatav4prefix-structure).
+
+~~~ api
+businesscentralodataV4Prefix/WS_Order_V3
+~~~
+
+### Request Headers
+
+Header | Value |
+--- | --- |
+Authorization | Bearer {token}. Required.|
+
+### Request Body
+
+Here is an example of the request
+
+```json
+{
+    
+        {
+            "Order_Type": "WEB",
+            "Order_Id": "WEB04",
+            "Total_Order_Amount": 238.95,
+            "Your_Reference": "2000000020",
+            "External_Document_No": "2000000020",
+            "Sell_to_Customer_No": "C00001",
+            "Sell_to_Customer_Name": "Black and White Ltd",
+            "Sell_to_Customer_Name_2": "",
+            "Sell_to_Address": "16 Hyde Park Gate",
+            "Sell_to_Address_2": "",
+            "Sell_to_City": "London",
+            "Sell_to_Contact": "Mr. John Black",
+            "Sell_to_Post_Code": "SW7 9DG",
+            "Sell_to_County": "",
+            "Sell_to_Country_Region_Code": "GB",
+            "Sell_to_Phone_No": "07110221662",
+            "Sell_to_E_Mail": "black&whiteltd@gmail.com",
+            "Sell_to_Customer_Template_Code": "",
+            "Sell_to_Contact_No": "",
+            "Ship_to_Code": "",
+            "Ship_to_Name": "Camden Shop 1",
+            "Ship_to_Name_2": "",
+            "Ship_to_Address": "211 Camden High St",
+            "Ship_to_Address_2": "",
+            "Ship_to_City": "London",
+            "Ship_to_Contact": "Mr. Sam White",
+            "Ship_to_Post_Code": "NW1 7BT",
+            "Ship_to_County": "",
+            "Ship_to_Country_Region_Code": "GB",
+
+            "WS_Order_V3Lines": [
+               {
+                "Order_Group": "GROUP_A",
+                "Order_Id": "WEB04",
+                "Line_Id": "1",
+                "Type": "Item",
+                "No": "B12147",
+                "Description": "First Line",
+                "Description_2": "",
+                "Quantity": 1
+               }
+            ]
+           
+        }
+}
+```
+
+### Response
+
+Here is an example of the response
+
+```json
+{
+    "value": [
+        {
+            "@odata.context": "https://api.businesscentral.dynamics.com/v2.0/bevicasaas.onmicrosoft.com/Production/ODataV4/$metadata#Company('Bevica%20Web%20Integration')/WS_Order_V3/$entity",
+            "@odata.etag": "W/\"JzQ0O2xEZXoxOE96dnlCQUwvUDlPUkl6YWtES3l2Umx5ZEVrSDd1YnFRaHhkWDg9MTswMDsn\"",
+            "Order_Group": "GROUP_A",
+            "Order_Id": "WEB04",
+            "Order_Type": "WEB",
+            "Customer_Id": "",
+            "Customer_Email": "",
+            "Location_Id": "",
+            "Ship_Address_Id": "",
+            "Ship_Method_Id": "",
+            "Shipping_Agent_Id": "",
+            "Shipping_Agent_Service_Id": "",
+            "Payment_Method_Id": "",
+            "Payment_Id": "",
+            "Pending_Cart": false,
+            "Dispatched": false,
+            "Paid": false,
+            "Total_Tax_Amount": 0,
+            "Total_Order_Amount": 238.95,
+            "Total_Discount_Amount": 0,
+            "Total_Voucher_Amount": 0,
+            "Total_Ship_Cost_Amount": 0,
+            "Order_URL": "",
+            "Delivery_Note_Text_1": "",
+            "Delivery_Note_Text_2": "",
+            "Gift_Note_Text_1": "",
+            "Gift_Note_Text_2": "",
+            "Note_Text_1": "",
+            "Note_Text_2": "",
+            "Order_Date": "0001-01-01",
+            "Posting_Date": "0001-01-01",
+            "Shipment_Date": "0001-01-01",
+            "Posting_Description": "",
+            "Payment_Terms_Code": "",
+            "Due_Date": "0001-01-01",
+            "Shipment_Method_Code": "",
+            "Location_Code": "",
+            "Shortcut_Dimension_1_Code": "",
+            "Shortcut_Dimension_2_Code": "",
+            "Customer_Posting_Group": "",
+            "Currency_Code": "",
+            "Currency_Factor": 0,
+            "Customer_Price_Group": "",
+            "Prices_Including_VAT": false,
+            "Customer_Disc_Group": "",
+            "Language_Code": "",
+            "Salesperson_Code": "",
+            "Package_Tracking_No": "",
+            "VAT_Bus_Posting_Group": "",
+            "Your_Reference": "2000000020",
+            "VAT_Registration_No": "",
+            "Reason_Code": "",
+            "Gen_Bus_Posting_Group": "",
+            "External_Document_No": "2000000020",
+            "Payment_Method_Code": "",
+            "Shipping_Agent_Code": "",
+            "VAT_Country_Region_Code": "",
+            "Document_Date": "0001-01-01",
+            "Sell_to_Customer_No": "C00001",
+            "Sell_to_Customer_Name": "Black and White Ltd",
+            "Sell_to_Customer_Name_2": "",
+            "Sell_to_Address": "16 Hyde Park Gate",
+            "Sell_to_Address_2": "",
+            "Sell_to_City": "London",
+            "Sell_to_Contact": "Mr. John Black",
+            "Sell_to_Post_Code": "SW7 9DG",
+            "Sell_to_County": "",
+            "Sell_to_Country_Region_Code": "GB",
+            "Sell_to_Phone_No": "07110221662",
+            "Sell_to_E_Mail": "black&whiteltd@gmail.com",
+            "Sell_to_Customer_Template_Code": "",
+            "Sell_to_Contact_No": "",
+            "Ship_to_Code": "",
+            "Ship_to_Name": "Camden Shop 1",
+            "Ship_to_Name_2": "",
+            "Ship_to_Address": "211 Camden High St",
+            "Ship_to_Address_2": "",
+            "Ship_to_City": "London",
+            "Ship_to_Contact": "Mr. Sam White",
+            "Ship_to_Post_Code": "NW1 7BT",
+            "Ship_to_County": "",
+            "Ship_to_Country_Region_Code": "GB",
+            "Requested_Delivery_Date": "0001-01-01",
+            "Promised_Delivery_Date": "0001-01-01",
+            "Shipping_Agent_Service_Code": ""
+        }
+   
+    ]
+}
+```
+
+### Web Order Fields
+
+| Relation | Source Table | Field Caption | Field Type | Field Lenght | Note      | Mandatory | Required |
+| ----------- | ----------- | ----------- | ---------- | ------------ |---------- |--- |--- |
+| 1  | Web Order Header | Order Group | Code | 50 | Key (Internal Use) |  |  |
+| 1  | Web Order Header | Order Id | Code | 50 | Key (Unique Web Reference) | Y | Y |
+| 1  | Web Order Header | Order Type | Code | 10 | Web Specific |  | Y |
+| 1  | Web Order Header | Customer Id | Code | 50 | Web Specific |  | Y |
+| 1  | Web Order Header | Customer Email | Text | 80 | Web Specific |  | Y |
+| 1  | Web Order Header | Location Id | Code | 50 | Web Specific |  |  |
+| 1  | Web Order Header | Ship Address Id | Code | 50 | Web Specific |  |  |
+| 1  | Web Order Header | Payment Id | Code | 50 | Web Specific |  |  |
+| 1  | Web Order Header | Ship Method Id | Code | 50 | Web Specific |  |  |
+| 1  | Web Order Header | Pending Cart | Boolean |  | Web Specific |  |  |
+| 1  | Web Order Header | Payment Method Id | Code | 50 | Web Specific |  |  |
+| 1  | Web Order Header | Shpping Agent Id | code | 50 | Web Specific |  |  |
+| 1  | Web Order Header | Shipping Agent Service Id | Code | 50 | Web Specific |  |  |
+| 1  | Web Order Header | Dispatched | Boolean |  | Web Specific |  |  |
+| 1  | Web Order Header | Paid | Boolean |  | Web Specific |  |  |
+| 1  | Web Order Header | Order Date | Date |  | Standard |  | Y |
+| 1  | Web Order Header | Posting Date | Date |  | Standard |  |  |
+| 1  | Web Order Header | Shipment Date | Date |  | Standard |  |  |
+| 1  | Web Order Header | Posting Description | Text | 50 | Standard |  |  |
+| 1  | Web Order Header | Payment Terms Code | Code | 10 | Standard |  |  |
+| 1  | Web Order Header | Due Date | Date |  | Standard |  |  |
+| 1  | Web Order Header | Shipment Method Code | Code | 10 | Standard |  |  |
+| 1  | Web Order Header | Location Code | Code | 10 | Standard |  |  |
+| 1  | Web Order Header | Shortcut Dimension 1 Code | Code | 20 | Standard |  |  |
+| 1  | Web Order Header | Shortcut Dimension 2 Code | Code | 20 | Standard |  |  |
+| 1  | Web Order Header | Customer Posting Group | Code | 20 | Standard |  |  |
+| 1  | Web Order Header | Currency Code | Code | 10 | Standard |  |  |
+| 1  | Web Order Header | Currency Factor | Decimal |  | Standard |  |  |
+| 1  | Web Order Header | Customer Price Group | Code | 10 | Standard |  |  |
+| 1  | Web Order Header | Prices Including VAT | Boolean |  | Standard |  |  |
+| 1  | Web Order Header | Customer Disc. Group | Code | 20 | Standard |  |  |
+| 1  | Web Order Header | Language Code | Code | 10 | Standard |  |  |
+| 1  | Web Order Header | Salesperson Code | Code | 20 | Standard |  |  |
+| 1  | Web Order Header | Package Tracking No. | Text | 30 | Standard |  |  |
+| 1  | Web Order Header | VAT Bus. Posting Group | Code | 20 | Standard |  |  |
+| 1  | Web Order Header | Your Reference | Text | 35 | Standard |  |  |
+| 1  | Web Order Header | VAT Registration No. | Text | 20 | Standard |  |  |
+| 1  | Web Order Header | Reason Code | Code | 10 | Standard |  |  |
+| 1  | Web Order Header | Gen. Bus. Posting Group | Code | 20 | Standard |  |  |
+| 1  | Web Order Header | External Document No. | Code | 35 | Standard |  |  |
+| 1  | Web Order Header | Payment Method Code | Code | 10 | Standard |  |  |
+| 1  | Web Order Header | Shipping Agent Code | Code | 10 | Standard |  |  |
+| 1  | Web Order Header | VAT Country/Region Code | Code | 10 | Standard |  |  |
+| 1  | Web Order Header | Document Date | Date |  | Standard |  |  |
+| 1  | Web Order Header | Sell-to Customer No. | Code | 20 | Standard |  |  |
+| 1  | Web Order Header | Sell-to Customer Name | Text | 50 | Standard |  | Y |
+| 1  | Web Order Header | Sell-to Customer Name 2 | Text | 50 | Standard |  |  |
+| 1  | Web Order Header | Sell-to Address | Text | 50 | Standard |  | Y |
+| 1  | Web Order Header | Sell-to Address 2 | Text | 50 | Standard |  |  |
+| 1  | Web Order Header | Sell-to City | Text | 30 | Standard |  | Y |
+| 1  | Web Order Header | Sell-to Contact | Text | 50 | Standard |  |  |
+| 1  | Web Order Header | Sell-to Post Code | Code | 20 | Standard |  | Y |
+| 1  | Web Order Header | Sell-to County | Text | 30 | Standard |  | Y |
+| 1  | Web Order Header | Sell-to Country/Region Code | Code | 10 | Standard |  |  |
+| 1  | Web Order Header | Sell-to Phone No. | Text | 30 | Standard |  | Y |
+| 1  | Web Order Header | Sell-to E-Mail | Text | 80 | Standard |  | Y |
+| 1  | Web Order Header | Sell-to Customer Template Code | Code | 10 | Standard |  |  |
+| 1  | Web Order Header | Sell-to Contact No. | Code | 20 | Standard |  |  |
+| 1  | Web Order Header | Ship-to Code | Code | 10 | Standard |  |  |
+| 1  | Web Order Header | Ship-to Name | Text | 50 | Standard |  | Y |
+| 1  | Web Order Header | Ship-to Name 2 | Text | 50 | Standard |  |  |
+| 1  | Web Order Header | Ship-to Address | Text | 50 | Standard |  | Y |
+| 1  | Web Order Header | Ship-to Address 2 | Text | 50 | Standard |  |  |
+| 1  | Web Order Header | Ship-to City | Text | 30 | Standard |  | Y |
+| 1  | Web Order Header | Ship-to Contact | Text | 50 | Standard |  | Y |
+| 1  | Web Order Header | Ship-to Post Code | Code | 20 | Standard |  | Y |
+| 1  | Web Order Header | Ship-to County | Text | 30 | Standard |  | Y |
+| 1  | Web Order Header | Ship-to Country/Region Code | Code | 10 | Standard |  | Y |
+| 1  | Web Order Header | Order URL | Text | 80 | Web Specific |  |  |
+| 1  | Web Order Header | Total Ship Cost Amount | Decimal |  | Web Specific |  |  |
+| 1  | Web Order Header | Total Voucher Amount | Decimal |  | Web Specific |  |  |
+| 1  | Web Order Header | Total Discount Amount | Decimal |  | Web Specific |  |  |
+| 1  | Web Order Header | Total Order Amount | Decimal |  | Web Specific |  |  |
+| 1  | Web Order Header | Total Tax Amount | Decimal |  | Web Specific |  |  |
+| 1  | Web Order Header | Delivery Note Text 1 | Text | 80 | Web Specific |  | Y |
+| 1  | Web Order Header | Delivery Note Text 2 | Text | 80 | Web Specific |  |  |
+| 1  | Web Order Header | Gift Note Text 1 | Text | 80 | Web Specific |  |  |
+| 1  | Web Order Header | Gift Note Text 2 | Text | 80 | Web Specific |  |  |
+| 1  | Web Order Header | Note Text 1 | Text | 80 | Web Specific |  |  |
+| 1  | Web Order Header | Note Text 2 | Text | 80 | Web Specific |  |  |
+| 1  | Web Order Header | Requested Delivery Date | Date |  | Standard |  | Y |
+| 1  | Web Order Header | Promised Delivery Date | Date |  | Standard |  |  |
+| 1  | Web Order Header | Shipping Agent Service Code | Code | 10 | Standard |  |  |
+| 1  | Web Order Header | Decimal 01 | Decimal |  | Web Specific |  |  |
+| 1  | Web Order Header | Integer 01 | Integer |  | Web Specific |  |  |
+| 1  | Web Order Header | Date 01 | Date |  | Web Specific |  |  |
+| 1  | Web Order Header | Code 01 | Code | 20 | Web Specific |  |  |
+| 1  | Web Order Header | Time 01 | Time |  | Web Specific |  |  |
+| 1  | Web Order Header | DateTime 01 | DateTime |  | Web Specific |  |  |
+| 1  | Web Order Header | Text 01 | Text | 50 | Web Specific |  |  |
+| 1  | Web Order Header | Boolean 01 | Boolean |  | Web Specific |  |  |
+| 1  | Web Order Header | Decimal 02 | Decimal |  | Web Specific |  |  |
+| 1  | Web Order Header | Integer 02 | Integer |  | Web Specific |  |  |
+| 1  | Web Order Header | Date 02 | Date |  | Web Specific |  |  |
+| 1  | Web Order Header | Code 02 | Code | 20 | Web Specific |  |  |
+| 1  | Web Order Header | Time 02 | Time |  | Web Specific |  |  |
+| 1  | Web Order Header | DateTime 02 | DateTime |  | Web Specific |  |  |
+| 1  | Web Order Header | Text 02 | Text | 50 | Web Specific |  |  |
+| 1  | Web Order Header | Boolean 02 | Boolean |  | Web Specific |  |  |
+| 1..N  | Web Order Lines | Order Group | Code | 50 | Key |  |  |
+| 1..N  | Web Order Lines | Order Id | Code | 50 | Key (Unique External Reference) | Y | Y |
+| 1..N  | Web Order Lines | Line Id | Code | 50 | Key (Unique External Reference) | Y | Y |
+| 1..N  | Web Order Lines | Product Id | Code | 50 | Web Specific |  | Y |
+| 1..N  | Web Order Lines | Unit of Measure Id | Code | 50 | Web Specific |  |  |
+| 1..N  | Web Order Lines | Force Calculation Price | Boolean |  | Web Specific |  |  |
+| 1..N  | Web Order Lines | Lot No. | Code | 20 | Web Specific |  |  |
+| 1..N  | Web Order Lines | Negative | Boolean |  | Web Specific |  |  |
+| 1..N  | Web Order Lines | Type | Option |  | Standard |  |  |
+| 1..N  | Web Order Lines | No. | Code | 20 | Standard |  |  |
+| 1..N  | Web Order Lines | Shipment Date | Date |  | Standard |  |  |
+| 1..N  | Web Order Lines | Description | Text | 50 | Standard |  | Y |
+| 1..N  | Web Order Lines | Description 2 | Text | 50 | Standard |  |  |
+| 1..N  | Web Order Lines | Quantity | Decimal |  | Standard |  | Y |
+| 1..N  | Web Order Lines | Unit Price | Decimal |  | Standard |  | Y |
+| 1..N  | Web Order Lines | VAT % | Decimal |  | Standard |  |  |
+| 1..N  | Web Order Lines | Line Discount % | Decimal |  | Standard |  |  |
+| 1..N  | Web Order Lines | Line Discount Amount | Decimal |  | Standard |  |  |
+| 1..N  | Web Order Lines | Net Amount | Decimal |  | Standard |  |  |
+| 1..N  | Web Order Lines | Amount Including VAT | Decimal |  | Standard |  |  |
+| 1..N  | Web Order Lines | Shortcut Dimension 1 Code | Code | 20 | Standard |  |  |
+| 1..N  | Web Order Lines | Shortcut Dimension 2 Code | Code | 20 | Standard |  |  |
+| 1..N  | Web Order Lines | Gen. Bus. Posting Group | Code | 20 | Standard |  |  |
+| 1..N  | Web Order Lines | Gen. Prod. Posting Group | Code | 20 | Standard |  |  |
+| 1..N  | Web Order Lines | VAT Bus. Posting Group | Code | 20 | Standard |  |  |
+| 1..N  | Web Order Lines | VAT Prod. Posting Group | Code | 20 | Standard |  |  |
+| 1..N  | Web Order Lines | VAT Base Amount | Decimal |  | Standard |  |  |
+| 1..N  | Web Order Lines | Unit Cost | Decimal |  | Standard |  |  |
+| 1..N  | Web Order Lines | VAT Identifier | Code | 20 | Standard |  |  |
+| 1..N  | Web Order Lines | Variant Code | Code | 10 | Standard |  |  |
+| 1..N  | Web Order Lines | Qty. per Unit of Measure | Decimal |  | Standard |  |  |
+| 1..N  | Web Order Lines | Unit of Measure Code | Code | 10 | Standard |  |  |
+| 1..N  | Web Order Lines | Item Category Code | Code | 20 | Standard |  |  |
+| 1..N  | Web Order Lines | Requested Delivery Date | Date |  | Standard |  |  |
+| 1..N  | Web Order Lines | Promised Delivery Date | Date |  | Standard |  |  |
+| 1..N  | Web Order Lines | Planned Delivery Date | Date |  | Standard |  |  |
+| 1..N  | Web Order Lines | Planned Shipment Date | Date |  | Standard |  |  |
+| 1..N  | Web Order Lines | Decimal 01 | Decimal |  | Web Specific |  |  |
+| 1..N  | Web Order Lines | Integer 01 | Integer |  | Web Specific |  |  |
+| 1..N  | Web Order Lines | Date 01 | Date |  | Web Specific |  |  |
+| 1..N  | Web Order Lines | Code 01 | Code | 20 | Web Specific |  |  |
+| 1..N  | Web Order Lines | Time 01 | Time |  | Web Specific |  |  |
+| 1..N  | Web Order Lines | DateTime 01 | DateTime |  | Web Specific |  |  |
+| 1..N  | Web Order Lines | Text 01 | Text | 50 | Web Specific |  |  |
+| 1..N  | Web Order Lines | Boolean 01 | Boolean |  | Web Specific |  |  |
+| 1..N  | Web Order Lines | Decimal 02 | Decimal |  | Web Specific |  |  |
+| 1..N  | Web Order Lines | Integer 02 | Integer |  | Web Specific |  |  |
+| 1..N  | Web Order Lines | Date 02 | Date |  | Web Specific |  |  |
+| 1..N  | Web Order Lines | Code 02 | Code | 20 | Web Specific |  |  |
+| 1..N  | Web Order Lines | Time 02 | Time |  | Web Specific |  |  |
+| 1..N  | Web Order Lines | DateTime 02 | DateTime |  | Web Specific |  |  |
+| 1..N  | Web Order Lines | Text 02 | Text | 50 | Web Specific |  |  |
+| 1..N  | Web Order Lines | Boolean 02 | Boolean |  | Web Specific |  |  |
+| 1..N  | Web Order Lines | Decimal 03 | Decimal |  | Web Specific |  |  |
+| 1..N  | Web Order Lines | Integer 03 | Integer |  | Web Specific |  |  |
+| 1..N  | Web Order Lines | Date 03 | Date |  | Web Specific |  |  |
+| 1..N  | Web Order Lines | Code 03 | Code | 20 | Web Specific |  |  |
+| 1..N  | Web Order Lines | Time 03 | Time |  | Web Specific |  |  |
+| 1..N  | Web Order Lines | DateTime 03 | DateTime |  | Web Specific |  |  |
+| 1..N  | Web Order Lines | Text 03 | Text | 50 | Web Specific |  |  |
+| 1..N  | Web Order Lines | Boolean 03 | Boolean |  | Web Specific |  |  |
+
+## Create Payment
+
+Retrieve the properties and relationships of a Stock object for Business Central.
+
+### Http Request
+
+Replace the URL endpoint for Dynamics 365 Business Central depending on environment following the [guideline](#endpoints-businesscentralodatav4prefix-structure).
+
+~~~ api
+POST
+
+businesscentralodataV4Prefix/WS_Payment_V3
+~~~
+
+### Request Headers
+
+Header | Value |
+--- | --- |
+Authorization | Bearer {token}. Required.|
+
+### Request Body
+
+Here is an example of the request
+
+```json
+{
+   
+    "External_Document": "TEST001",
+    "Currency_Code": "GBP",
+    "Customer_No": "C001",
+    "Payment_Reference": "TPAYTESTEST",
+    "Amount": 70.7
+
+}
+```
+### Response
+
+Here is an example of the response
+
+```json
+{
+    "value": [
+        {
+            "@odata.context": "https://api.businesscentral.dynamics.com/v2.0/bevicasaas.onmicrosoft.com/Production/ODataV4/$metadata#Company('Bevica%20Web%20Integration')/WS_Payment_V3/$entity",
+            "@odata.etag": "W/\"JzQ0OytoRXh1REljR1habHMyNHFvZ0F2QVFUd1I1RGk0WXd6L2ZCSlo1RCtUK2M9MTswMDsn\"",
+            "Entry_No": 2,
+            "Currency_Code": "GBP",
+            "Customer_Id": "",
+            "Customer_No": "C001",
+            "Document_No": "",
+            "External_Document": "TEST001",
+            "Payment_Method_Code": "",
+            "Payment_Reference": "TPAYTESTEST",
+            "Posting_Date": "0001-01-01",
+            "Amount": 70.7,
+            "Due_Date": "0001-01-01",
+            "Refund": false
+        }
+    ]
+}
+```
+
+### Payment Fields
+
+| Relation | Source Table | Field Caption | Field Type | Field Lenght | Note      |
+| ----------- | ----------- | ----------- | ---------- | ------------ |---------- |
+|  1          | Payment         | External_Document         |  String    | 80           | |
+|  1          | Payment         | Currency_Code         |  String    | 10           | |
+|  1          | Payment         | Payment_Reference         |  String    | 50           | |
+|  1          | Payment         | Amount         |  Decimal    |            | |
+|  1          | Payment         | Payment_Method_Code         |  String    | 10           | |
+|  1          | Payment         | Posting_Date         |  Date    |            | |
+|  1          | Payment         | Due_Date         |  Date    |            | |
+
+
+## GET Manifest
+
+Retrieve the properties and relationships of a Stock object for Business Central.
+
+### Http Request
+
+Replace the URL endpoint for Dynamics 365 Business Central depending on environment following the [guideline](#endpoints-businesscentralodatav4prefix-structure).
+
+~~~ api
+businesscentralodataV4Prefix/WS_Manifest_V3
+~~~
+
+### Request Headers
+
+Header | Value |
+--- | --- |
+Authorization | Bearer {token}. Required.|
+
+### Request Body
+
+Do not supply a request body for this method.
+
+### Response
+
+Here is an example of the response
+
+```json
+{
+    "value": [
+   
+    ]
+}
+```
+
+
+## GET Orders Status
+
+Retrieve the properties and relationships of a Stock object for Business Central.
+
+### Http Request
+
+Replace the URL endpoint for Dynamics 365 Business Central depending on environment following the [guideline](#endpoints-businesscentralodatav4prefix-structure).
+
+~~~ api
+businesscentralodataV4Prefix/WS_OrderStatus_V3
+~~~
+
+### Request Headers
+
+Header | Value |
+--- | --- |
+Authorization | Bearer {token}. Required.|
+
+### Request Body
+
+Do not supply a request body for this method.
+
+### Response
+
+Here is an example of the response
+
+```json
+{
+    "value": [
+        {
+    "@odata.context": "https://api.businesscentral.dynamics.com/v2.0/bevicasaas.onmicrosoft.com/Production/ODataV4/$metadata#Company('Bevica%20Web%20Integration')/WS_OrderStatus_V3",
+    "value": [
+        {
+            "@odata.etag": "W/\"JzQ0O0hFMHVLcEwrclZreUdPeHYrcWVCRG9ORHpFeHg5UjZHZjFDOWhlUnFER3c9MTswMDsn\"",
+            "Order_Group": "GROUP_A",
+            "Order_Id": "WEB04",
+            "Order_Date": "0001-01-01",
+            "BC_Status": "Created",
+            "BC_Error_Message": "",
+            "BC_Creation_Date_Time": "2022-06-29T15:50:26.81Z",
+            "BC_Last_Mod_Date_Time": "2022-06-29T15:50:26.81Z",
+            "BC_Last_Validate_Date_Time": "0001-01-01T00:00:00Z",
+            "BC_Last_Process_Date_Time": "0001-01-01T00:00:00Z",
+            "BC_Validated": false,
+            "BC_Processed": false,
+            "BC_Errored": false,
+            "BC_Document_Type": " ",
+            "BC_Document_No": ""
+        },
+        {
+            "@odata.etag": "W/\"JzQ0OzE2bzRXUTVoVDBwOFcwdDc0ZzlFUnNlRlAzc3BPeC9LMkxiTkY0K1hBS0k9MTswMDsn\"",
+            "Order_Group": "GROUP_A",
+            "Order_Id": "WEBORDER00001",
+            "Order_Date": "0001-01-01",
+            "BC_Status": "Created",
+            "BC_Error_Message": "",
+            "BC_Creation_Date_Time": "2022-06-29T14:25:19.313Z",
+            "BC_Last_Mod_Date_Time": "2022-06-29T14:25:19.327Z",
+            "BC_Last_Validate_Date_Time": "0001-01-01T00:00:00Z",
+            "BC_Last_Process_Date_Time": "0001-01-01T00:00:00Z",
+            "BC_Validated": false,
+            "BC_Processed": false,
+            "BC_Errored": false,
+            "BC_Document_Type": " ",
+            "BC_Document_No": ""
+        }
+    ]
+}
+   
+    ]
+}
+```
+
+### Order Status Fields
+
+| Relation | Source Table | Field Caption | Field Type | Field Lenght | Note      |
+| ----------- | ----------- | ----------- | ---------- | ------------ |---------- |
+|  1          | Web Order         | BC_Status         |  Enum    | Created,Validated,Processed,Posted           | |
+|  1          | Web Order         | BC_Error_Message         |  Text    | 250  | Error On Validation |
+|  1          | Web Order         | BC_Document_No         |  Text    | 20  | Sales Order No. on BC |
+
+## GET Sales Prices
+
+Retrieve the properties and relationships of a Sales Prices object for Business Central.
+
+### Http Request
+
+Replace the URL endpoint for Dynamics 365 Business Central depending on environment following the [guideline](#endpoints-businesscentralodatav4prefix-structure).
+
+~~~ api
+GET 
+
+businesscentralodataV4Prefix/WS_SalesPrices_V3
+~~~
+
+### Request Headers
+
+Header | Value |
+--- | --- |
+Authorization | Bearer {token}. Required.|
+
+### Request Body
+
+Do not supply a request body for this method.
+
+### Response
+
+Here is an example of the response
+
+```json
+{
+    "value": [
+   
+    ]
+}
+```
 
 ### Recommended Content
 
