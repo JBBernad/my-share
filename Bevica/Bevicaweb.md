@@ -336,49 +336,53 @@ Here is an example of the response
 ### Product Fields
 
 | Relation | Source Table | Field Caption | Field Type | Field Lenght | Note |
-| ----------- | ----------- | ----------- | -------- | ---------- |---------- |
-|  1  |  Product  |  Code  |
-|  1  |  Product  |  Web Product Id  |
-|  1  |  Product  |  Web Last Md. Date Time  |
-|  1  |  Product  |  Published  |
-|  1  |  Product  |  Last Modification  |
-|  1  |  Product  |  Marketing Description  |
-|  1  |  Product  |  Category Code  |
-|  1  |  Product  |  Category Description  |
-|  1  |  Product  |  Country Code  |
-|  1  |  Product  |  Country Description  |
-|  1  |  Product  |  Region Code  |
-|  1  |  Product  |  Region Description  |
-|  1  |  Product  |  SubRegion Code  |
-|  1  |  Product  |  SubRegion Description  |
-|  1  |  Product  |  Producer  |
-|  1  |  Product  |  Item Classification  |
-|  1  |  Product  |  Alcool Percent  |
-|  1  |  Product  |  Vintage  |
-|  1  |  Product  |  Grapes  |
-|  1  |  Product  |  Attributes  |
-|  1  |  Product  |  Tags  |
-|  1..1    |  SKU\Variant  |  Web Item Id  |
-|  1..1    |  SKU\Variant  |  Published  |
-|  1..1    |  SKU\Variant  |  Deleted  |
-|  1..1    |  SKU\Variant  |  Web Last Mod. Date Time  |
-|  1..1    |  SKU\Variant  |  Item No  |
-|  1..1    |  SKU\Variant  |  Blocked  |
-|  1..1    |  SKU\Variant  |  Last Modification  |
-|  1..1    |  SKU\Variant  |  Description  |
-|  1..1    |  SKU\Variant  |  Base UoM Code  |
-|  1..1    |  SKU\Variant  |  Base UoM Description  |
-|  1..1    |  SKU\Variant  |  Sales UoM Code  |
-|  1..1    |  SKU\Variant  |  Sales UoM Description  |
-|  1..1    |  SKU\Variant  |  Sales UoM Qty Per  |
-|  1..1    |  SKU\Variant  |  Unit Volume  |
-|  1..1    |  SKU\Variant  |  Unit Price With Duty  |
-|  1..1    |  SKU\Variant  |  Unit Price WithOut Duty  |
-|  1..1    |  SKU\Variant  |  Stock Quantity Base  |
-|  1..1    |  SKU\Variant  |  Bottle   |
-|  1..1    |  SKU\Variant  |  Sell Case Only  |
-
-
+| ----------- | ----------- | ----------- | ---------- | ------------ |---------- |
+|  1       |  Product      |  Code        | Code       |  20          |           |
+|  1       |  Product      |  Web Product Id  | Code       |  20      |           |
+|  1       |  Product      |  Web Last Md. Date Time  | Date Time     |           |
+|  1       |  Product      |  Published  | Boolean    |               ||
+|  1       |  Product      |  Last Modification  | Date Time          ||
+|  1       |  Product      |  Marketing Description  |String ||
+|  1       |  Product      |  Category Code  | String ||
+|  1       |  Product      |  Category Description  | String ||
+|  1       |  Product      |  Country Code  | String ||
+|  1       |  Product      |  Country Description  |  String ||
+|  1       |  Product      |  Region Code  | String ||
+|  1       |  Product      |  Region Description  |String ||
+|  1       |  Product      |  SubRegion Code  |String ||
+|  1       |  Product      |  SubRegion Description  |String ||
+|  1       |  Product      |  Producer  |String ||
+|  1       |  Product      |  Item Classification  |String ||
+|  1       |  Product      |  Alcool Percent  |Decimal ||
+|  1       |  Product      |  Vintage  |String ||
+|  1       |  Product      |  Grapes  |String ||
+|  1       |  Product      |  Attributes  |String ||
+|  1       |  Product      |  Tags  |String ||
+|  1..1    |  SKU\Variant  |  Web Item Id  |String ||
+|  1..1    |  SKU\Variant  |  Published  |Boolean ||
+|  1..1    |  SKU\Variant  |  Deleted  |Boolean ||
+|  1..1    |  SKU\Variant  |  Web Last Mod. Date Time  | Date Time ||
+|  1..1    |  SKU\Variant  |  Item No  | String ||
+|  1..1    |  SKU\Variant  |  Blocked  | Boolean ||
+|  1..1    |  SKU\Variant  |  Last Modification  | Date Time ||
+|  1..1    |  SKU\Variant  |  Description  | String ||
+|  1..1    |  SKU\Variant  |  Base UoM Code  | String ||
+|  1..1    |  SKU\Variant  |  Base UoM Description  | String ||
+|  1..1    |  SKU\Variant  |  Sales UoM Code  | String ||
+|  1..1    |  SKU\Variant  |  Sales UoM Description  | String ||
+|  1..1    |  SKU\Variant  |  Sales UoM Qty Per  | Decimal ||
+|  1..1    |  SKU\Variant  |  Unit Volume  | Decimal ||
+|  1..1    |  SKU\Variant  |  Unit Price With Duty  |Decimal ||
+|  1..1    |  SKU\Variant  |  Unit Price WithOut Duty  |Decimal ||
+|  1..1    |  SKU\Variant  |  Stock Quantity Base  |Decimal ||
+|  1..1    |  SKU\Variant  |  Bottles Per Case | Deciaml||
+|  1..1    |  SKU\Variant  |  Purchasing Code | String||
+|  1..1    |  SKU\Variant  |  Unit Weight | Decimal||
+|  1..1    |  SKU\Variant  |  Sales Unit Weight | Decimal||
+|  1..1    |  SKU\Variant  |  Web UoM Code | String||
+|  1..1    |  SKU\Variant  |  Web UoM Description | String||
+|  1..1    |  SKU\Variant  |  Web Sale Only Unit | Decimal||
+|  1..1    |  SKU\Variant  |  Web Catalogue  | String||
 
 ## GET Stock
 
