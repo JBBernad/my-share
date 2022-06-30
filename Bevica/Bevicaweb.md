@@ -1057,6 +1057,21 @@ Here is an example of the response
     ]
 }
 ```
+### Sales Prices Fields
+
+| Relation | Source Table | Field Caption | Field Type | Field Lenght | Note      |
+| ----------- | ----------- | ----------- | ---------- | ------------ |---------- |
+|	1	|	Sales Prices	|	Item No	|	string	|	20	|
+|	1	|	Sales Prices	|	Variant Code	|	string	|	10	|
+|	1	|	Sales Prices	|	Sales Type	|	Type	|		|
+|	1	|	Sales Prices	|	Sales Code	|	string	|	10	|
+|	1	|	Sales Prices	|	Unit of Measure Code	|	string	|	10	|
+|	1	|	Sales Prices	|	Starting Date	|	date	|		|
+|	1	|	Sales Prices	|	Ending Date	|	date	|		|
+|	1	|	Sales Prices	|	Unit Price	|	decimal	|		|
+|	1	|	Sales Prices	|	Price Includes VAT	|	boolean	|		|
+|	1	|	Sales Prices	|	Minimum Quantity	|	decimal	|		|
+
 
 ### Recommended Content
 
