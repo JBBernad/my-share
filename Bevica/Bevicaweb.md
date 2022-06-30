@@ -1061,3 +1061,5 @@ Here is an example of the response
 ### Recommended Content
 
 [Business Central Standard Web Service ](BC/Readme.md)
+
+[Get Companies](https://docs.microsoft.com/en-us/dynamics365/business-central/dev-itpro/api-reference/v2.0/api/dynamics_company_get)

@@ -2,7 +2,7 @@
 
 ## Standard Microsoft Business Central 
 
-[MS Docs for Web Service](BC/Readme.md)
+[MS Docs for Web Service](BC/README.md)
 
 ## Bevica
 
