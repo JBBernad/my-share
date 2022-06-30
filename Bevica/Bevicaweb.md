@@ -496,7 +496,7 @@ Here is an example of the response
 
 ## Create Web Order
 
-Retrieve the properties and relationships of a Stock object for Business Central.
+Retrieve the properties and relationships of a Web Order object for Business Central.
 
 ### Http Request
 
@@ -833,7 +833,7 @@ Here is an example of the response
 
 ## Create Payment
 
-Retrieve the properties and relationships of a Stock object for Business Central.
+Retrieve the properties and relationships of a Payment Journal object for Business Central.
 
 ### Http Request
 
@@ -908,7 +908,7 @@ Here is an example of the response
 
 ## GET Manifest
 
-Retrieve the properties and relationships of a Stock object for Business Central.
+Retrieve the properties and relationships of a Manifest object for Business Central.
 
 ### Http Request
 
@@ -943,7 +943,7 @@ Here is an example of the response
 
 ## GET Orders Status
 
-Retrieve the properties and relationships of a Stock object for Business Central.
+Retrieve the properties and relationships of a Web Order object for Business Central.
 
 ### Http Request
 

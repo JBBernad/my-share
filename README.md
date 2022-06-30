@@ -2,14 +2,16 @@
 
 ## Standard Microsoft Business Central 
 
-[MS Docs for Web Service](BC/README.md)
+[MS Docs for Web Service](BC/BCWebServices.md)
 
 ## Bevica
 
 [Bevica Web Integration](Bevica/Bevicaweb.md)
 
 ## TVision Apps
+
 [External Billing](TVisionTech/ExternalBilling.md)
 
 ### Recommended Content
 
+[Grant Permission to Azure AD Application](TVisionTech/AzureADAppRegistration.md)
