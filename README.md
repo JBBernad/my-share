@@ -3,7 +3,6 @@
 ## Standard Microsoft Business Central 
 
 [Standard Microsoft Business Central Web Service Documentation](BC/BC-Standard.md)
-
 ## Bevica
 
 [Bevica Web Integration (OData)](Bevica/Bevicaweb.md)
