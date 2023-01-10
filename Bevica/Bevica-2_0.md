@@ -27,6 +27,7 @@ The articles in this section describe the key concepts and techniques for using 
 | Name | Description | Data Flow | Operations | Note|
 | ----------- | ----------- | ----------- | -------- | ---------- |
 | [Customer](#get-customers) | Customer Info and Ship Addresses | BC -> Web | Read | |
+| [Customer Ledger Entries](#get-customer-ledger-entries) | Customer Ledger Entries | BC -> Web | Read | | 
 | [Product](#get-products) | Items and Attributes | BC -> Web | Read | |
 | [Stock](#get-stock) | Stock Available  | BC -> Web | Read | |
 | [Web Order](#create-web-order) | Create Web Order and Lines in BC | Web->BC    | Read Create | |
@@ -34,7 +35,8 @@ The articles in this section describe the key concepts and techniques for using 
 | [Manifest](#get-manifest) | Shipping Manifest Status | BC -> Web | Read | |
 | [Orders Status](#get-orders-status) | List of Orders with Tracking updates | BC -> Web | Read | |
 | [Sales Prices](#get-sales-prices) | Plain List of Sales Prices| BC -> Web | Read | |
-| SOAP Real Time Functions| Library of function to consume with SOAP Calls | BC -> Web | Read | |
+| [Paid Reserve](#get-paid-reserve) | List of Paid Reserve Information| BC -> Web | Read | |
+| [Paid Reserve Entries](#get-paid-reserve-entries) | List of all Paid Reserve Entries| BC -> Web | Read | |
 
 ## Endpoints businesscentralPrefix structure
 
@@ -249,6 +251,46 @@ Here is an example of the response
 | 1..N | Ship-to Address | Shipping Agent Service Code | string | 10 |  |
 | 1..N | Ship-to Address | Service Zone Code | string | 10 |  |
 | 1..N | Ship-to Address | Duty Type | string | 10 |  |
+
+
+## GET Customer Ledger Entries
+
+### Http Request
+
+Replace the URL endpoint for Dynamics 365 Business Central depending on environment following the [guideline](#endpoints-businesscentralPrefix-structure).
+
+~~~ api
+businesscentralPrefix/custEntries
+~~~
+
+### Request Headers
+
+Header | Value |
+--- | --- |
+Authorization | Bearer {token}. Required.|
+
+### Request Body
+
+Do not supply a request body for this method.
+
+### Response
+
+Here is an example of the response
+
+```json
+
+"value": [
+        {
+        }
+    ]
+}
+```
+
+### Fields Information
+
+| Relation | Source Table | Field Caption | Field Type | Field Lenght | Note |
+| ----------- | ----------- | ----------- | -------- | ---------- |---------- |
+|  1  | Source Table| Fiel Name  |  Field Type  | 0 | Primary Key Field |
 
 ## GET Products
 
@@ -1097,6 +1139,90 @@ Here is an example of the response
 |	1	|	Sales Prices	|	Unit Price	|	decimal	|		|
 |	1	|	Sales Prices	|	Price Includes VAT	|	boolean	|		|
 |	1	|	Sales Prices	|	Minimum Quantity	|	decimal	|		|
+
+
+
+## GET Paid Reserve
+
+### Http Request
+
+Replace the URL endpoint for Dynamics 365 Business Central depending on environment following the [guideline](#endpoints-businesscentralPrefix-structure).
+
+~~~ api
+businesscentralPrefix/PaidReserves
+~~~
+
+### Request Headers
+
+Header | Value |
+--- | --- |
+Authorization | Bearer {token}. Required.|
+
+### Request Body
+
+Do not supply a request body for this method.
+
+### Response
+
+Here is an example of the response
+
+```json
+
+"value": [
+        {
+        }
+    ]
+}
+```
+
+### Fields Information
+
+| Relation | Source Table | Field Caption | Field Type | Field Lenght | Note |
+| ----------- | ----------- | ----------- | -------- | ---------- |---------- |
+|  1  | Source Table| Field Name  |  Field Type  | 0 | Primary Key Field |
+
+
+## GET Paid Reserve Entries
+
+### Http Request
+
+Replace the URL endpoint for Dynamics 365 Business Central depending on environment following the [guideline](#endpoints-businesscentralPrefix-structure).
+
+~~~ api
+businesscentralPrefix/PaidReserveEntries
+~~~
+
+### Request Headers
+
+Header | Value |
+--- | --- |
+Authorization | Bearer {token}. Required.|
+
+### Request Body
+
+Do not supply a request body for this method.
+
+### Response
+
+Here is an example of the response
+
+```json
+
+"value": [
+        {
+        }
+    ]
+}
+```
+
+### Fields Information
+
+| Relation | Source Table | Field Caption | Field Type | Field Lenght | Note |
+| ----------- | ----------- | ----------- | -------- | ---------- |---------- |
+|  1  | Source Table| Field Name  |  Field Type  | 0 | Primary Key Field |
+
+
+
 
 
 ### Recommended Content
