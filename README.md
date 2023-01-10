@@ -14,3 +14,6 @@
 [External Billing](TVisionTech/ExternalBilling.md)
 
 ### Recommended Content
+
+[Setup and Grant Permissions to Azure App Registration in Business Central](TVisionTech/AzureADAppRegistration.md)
+
