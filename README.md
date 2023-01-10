@@ -2,13 +2,13 @@
 
 ## Standard Microsoft Business Central 
 
-[MS Docs for Web Service](BC/Readme.md)
+[Standard Microsoft Business Central Web Service Documentation](BC/BC-Standard.md)
 
 ## Bevica
 
 [Bevica Web Integration (OData)](Bevica/Bevicaweb.md)
 
-[Bevica Web Integration 2.0 (Rest APIs)](Bevica/Bevica-2_0.md.md)
+[Bevica Web Integration 2.0 (Rest APIs)](Bevica/Bevica-2_0.md)
 
 ## TVision Apps
 
