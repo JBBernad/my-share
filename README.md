@@ -1,4 +1,4 @@
-# Welcome to TVision Technlogy Ltd Business Central Tech Documentation 
+# Welcome to TVision Technology Ltd Business Central Tech Documentation 
 
 ## Standard Microsoft Business Central 
 
@@ -15,4 +15,3 @@
 [External Billing](TVisionTech/ExternalBilling.md)
 
 ### Recommended Content
-
