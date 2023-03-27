@@ -26,17 +26,17 @@ The articles in this section describe the key concepts and techniques for using 
 
 | Name | Description | Data Flow | Operations | Note|
 | ----------- | ----------- | ----------- | -------- | ---------- |
-| [Customer](#get-customers) | Customer Info and Ship Addresses | BC -> Web | Read | |
+| [Customer](#get-customers) | Customer Info| BC -> Web | Read | |
+| [Ship To Address](#get-Ship-To-Address) | List of Customers Ship to Addresses | BC -> Web | Read | |
 | [Customer Ledger Entries](#get-customer-ledger-entries) | Customer Ledger Entries | BC -> Web | Read | | 
 | [Product](#get-products) | Items and Attributes | BC -> Web | Read | |
 | [Stock](#get-stock) | Stock Available  | BC -> Web | Read | |
-| [Web Order](#create-web-order) | Create Web Order and Lines in BC | Web->BC    | Read Create | |
+| [Web Order](#create-web-order) | Create Web Order BC | Web->BC    | Read Create | |
+| [Web Order Lines](#create-web-order-lines) | Create Web Order Lines in BC | Web->BC    | Read Create | |
 | [Payments](#create-payment) | Create Payment on Paym. Journal in BC | Web->BC | Create | |
 | [Manifest](#get-manifest) | Shipping Manifest Status | BC -> Web | Read | |
-| [Manifest Lines](#get-manifest) | List of Manifest Lines | BC -> Web | Read | |
-| [Ship To Address](#get-manifest) | List of Customers Ship to Addresses | BC -> Web | Read | |
+| [Manifest Lines](#get-manifest-lines) | List of Manifest Lines | BC -> Web | Read | |
 | [Orders Status](#get-orders-status) | List of Orders with Tracking updates | BC -> Web | Read | |
-| [Web Orders](#get-manifest) | Web Manifest Status | BC -> Web | Read | |
 | [Sales Prices](#get-sales-prices) | Plain List of Sales Prices| BC -> Web | Read | |
 | [Paid Reserve](#get-paid-reserve) | List of Paid Reserve Information| BC -> Web | Read | |
 | [Paid Reserve Entries](#get-paid-reserve-entries) | List of all Paid Reserve Entries| BC -> Web | Read | |
@@ -86,104 +86,55 @@ Do not supply a request body for this method.
 Here is an example of the response
 
 ```json
-"value": [
+{
+    "@odata.context": "https://api.businesscentral.dynamics.com/v2.0/bevicasaas.onmicrosoft.com/tvt_develop/api/tvisiontech/webbevica/v2.0/$metadata#companies(08f3eaa4-1d0f-ed11-90eb-0022480090f7)/customers",
+    "value": [
         {
-            "@odata.etag": "W/\"JzQ0OzMwdHIvR0xYVndidXFwVVBiaGcvS1g0NVFpQWtyNytMYW5ZV2VyVnJxRjg9MTswMDsn\"",
-            "No": "1010000",
-            "Web_Id": "",
-            "Web_Last_Mod_Date_Time": "2022-06-28T15:10:41.603Z",
-            "Name": "Asado Bar & Grill",
-            "Blocked": " ",
-            "Address": "Thatcham Business Village",
-            "Address_2": "Colthrop Way",
-            "City": "Thatcham",
-            "County": "Surrey",
-            "Post_Code": "RG19 4LW",
-            "Country_Region_Code": "GB",
-            "Primary_Contact_No": "CT100292",
-            "Contact_Name": "Greg Chapman",
-            "Phone_No": "",
-            "E_Mail": "greg@contoso.com",
-            "Home_Page": "www.Bevica.co.uk",
-            "Language_Code": "ENG",
-            "Currency_Code": "",
-            "Shipment_Method_Code": "EXW",
-            "Shipping_Agent_Code": "DHL",
-            "Shipping_Agent_Service_Code": "OVERNIGHT",
-            "Location_Code": "BLUE",
-            "VAT_Registration_No": "",
-            "Payment_Terms_Code": "30 DAYS",
-            "Payment_Method_Code": "",
-            "GLN": "8712345000004",
-            "Gen_Bus_Posting_Group": "DOMESTIC",
-            "VAT_Bus_Posting_Group": "DOMESTIC",
-            "Customer_Posting_Group": "DOMESTIC",
-            "Customer_Price_Group": "BARS",
-            "Customer_Disc_Group": "",
-            "AWRS_URN": "",
-            "Territory_Code": "MID",
-            "Partner_Type": " ",
-            "Privacy_Blocked": false,
-            "Salesperson_Code": "ED",
-            "Responsibility_Center": "",
-            "Global_Dimension_1_Code": "SALES",
-            "Global_Dimension_2_Code": "",
-            "Balance": 0,
-            "Balance_LCY": 0,
-            "Balance_Due": 0,
-            "Global_Dimension_1_Filter": "",
-            "Global_Dimension_2_Filter": "",
-            "Currency_Filter": "",
-            "Date_Filter": "..06/28/22"
-        },
-        {
-            "@odata.etag": "W/\"JzQ0O0pnMGoxR3pLTTQ1ZFNHME1Gb1BwSUtmc0FKU09ieGxPY0NYSkhJTlpOZ3c9MTswMDsn\"",
-            "No": "1020000",
-            "Web_Id": "",
-            "Web_Last_Mod_Date_Time": "2022-06-28T15:10:41.697Z",
-            "Name": "The Pickled Egg Pub",
-            "Blocked": " ",
-            "Address": "153 Thomas Drive",
-            "Address_2": "",
-            "City": "",
-            "County": "Fife",
-            "Post_Code": "KY16 1GY",
-            "Country_Region_Code": "GB",
-            "Primary_Contact_No": "",
-            "Contact_Name": "Mr. Mark McArthur",
-            "Phone_No": "",
-            "E_Mail": "",
-            "Home_Page": "",
-            "Language_Code": "ENG",
-            "Currency_Code": "",
-            "Shipment_Method_Code": "EXW",
-            "Shipping_Agent_Code": "DHL",
-            "Shipping_Agent_Service_Code": "",
-            "Location_Code": "BLUE",
-            "VAT_Registration_No": "",
-            "Payment_Terms_Code": "14 DAYS",
-            "Payment_Method_Code": "",
-            "GLN": "8712345000011",
-            "Gen_Bus_Posting_Group": "DOMESTIC",
-            "VAT_Bus_Posting_Group": "DOMESTIC",
-            "Customer_Posting_Group": "DOMESTIC",
-            "Customer_Price_Group": "LND GRP",
-            "Customer_Disc_Group": "",
-            "AWRS_URN": "",
-            "Territory_Code": "MID",
-            "Partner_Type": " ",
-            "Privacy_Blocked": false,
-            "Salesperson_Code": "JR",
-            "Responsibility_Center": "",
-            "Global_Dimension_1_Code": "SALES",
-            "Global_Dimension_2_Code": "",
-            "Balance": 0,
-            "Balance_LCY": 0,
-            "Balance_Due": 0,
-            "Global_Dimension_1_Filter": "",
-            "Global_Dimension_2_Filter": "",
-            "Currency_Filter": "",
-            "Date_Filter": "..06/28/22"
+            "@odata.etag": "W/\"JzIwOzE3ODg0MDY5ODgwMDI3NzE2MjgyMTswMDsn\"",
+            "systemId": "0536ae7f-1f0f-ed11-90eb-0022480090f7",
+            "no": "21233572",
+            "name": "Somadis",
+            "blocked": " ",
+            "address": "37, Rue El Wahda",
+            "address2": "",
+            "city": "AGDAL-RABAT",
+            "county": "",
+            "countryRegionCode": "MA",
+            "postCode": "MA-10100",
+            "contact": "M. Syed ABBAS",
+            "phoneNo": "",
+            "eMail": "",
+            "homePage": "",
+            "languageCode": "",
+            "currencyCode": "USD",
+            "shipmentMethodCode": "EXW",
+            "shippingAgentCode": "",
+            "shippingAgentServiceCode": "",
+            "locationCode": "BLUE",
+            "paymentMethodCode": "",
+            "paymentTermsCode": "30 DAYS",
+            "vatRegistrationNo": "",
+            "vatBusPostingGroup": "EXPORT",
+            "genBusPostingGroup": "EXPORT",
+            "customerPostingGroup": "FOREIGN",
+            "customerPriceGroup": "",
+            "customerDiscGroup": "",
+            "salespersonCode": "JR",
+            "territoryCode": "FOREIGN",
+            "tvtAWRSURN": "",
+            "gln": "",
+            "balance": 0,
+            "balanceLCY": 0,
+            "balanceDue": 0,
+            "balanceDueLCY": 0,
+            "globalDimension1Code": "SALES",
+            "globalDimension2Code": "",
+            "tvtwsWebId": "",
+            "tvtwsWebLastModDateTime": "2023-02-27T15:53:10.913Z",
+            "systemCreatedAt": "2022-07-29T09:19:17.213Z",
+            "systemCreatedBy": "b6188cb8-d398-4a1c-8ec3-87ce63665e0b",
+            "systemModifiedAt": "2023-02-27T15:53:10.913Z",
+            "systemModifiedBy": "b6188cb8-d398-4a1c-8ec3-87ce63665e0b"
         }
     ]
 }
@@ -197,7 +148,6 @@ Here is an example of the response
 | 1 | Customer | Web Id | string | 20 | Web Site Id |
 | 1 | Customer | Web Last Mod Date Time | datetime |  | Last Update Date Time  |
 | 1 | Customer | Name | string | 100 |  |
-| 1 | Customer | Name 2 | string | 50 |  |
 | 1 | Customer | Blocked | option |  |  |
 | 1 | Customer | Address | string | 100 |  |
 | 1 | Customer | Address 2 | string | 50 |  |
@@ -205,16 +155,14 @@ Here is an example of the response
 | 1 | Customer | County | string | 30 |  |
 | 1 | Customer | Post Code | string | 20 |  |
 | 1 | Customer | Country/Region Code | string | 10 |  |
-| 1 | Customer | Primary Contact No. | string | 20 |  |
 | 1 | Customer | Contact | string | 100 |  |
 | 1 | Customer | Phone No. | string | 30 |  |
 | 1 | Customer | E-Mail | string | 80 |  |
-| 1 | Customer | Home Page | string | 80 |  |
 | 1 | Customer | Language Code | string | 10 |  |
 | 1 | Customer | Currency Code | string | 10 |  |
 | 1 | Customer | Shipment Method Code | string | 10 |  |
 | 1 | Customer | Shipping Agent Code | string | 10 |  |
-| 1 | Customer | Shipping Agent Service Code | string | 19 |  |
+| 1 | Customer | Shipping Agent Service Code | string | 10 |  |
 | 1 | Customer | Location Code | string | 10 |  |
 | 1 | Customer | VAT Registration No. | string | 20 |  |
 | 1 | Customer | Payment Terms Code | string | 10 |  |
@@ -227,10 +175,6 @@ Here is an example of the response
 | 1 | Customer | Customer Disc. Group | string | 20 |  |
 | 1 | Customer | AWRS No. | string | 20 |  |
 | 1 | Customer | Territory Code | string | 10 |  |
-| 1 | Customer | Partner Type | enum |  |  |
-| 1 | Customer | Privacy Blocked | bool |  |  |
-| 1 | Customer | Salesperson Code | string | 20 |  |
-| 1 | Customer | Responsibility Center | string | 10 |  |
 | 1 | Customer | Global Dimension 1 Code | string | 20 |  |
 | 1 | Customer | Global Dimension 2 Code | string | 20 |  |
 | 1 | Customer | Balance | decimal |  |  |
@@ -241,6 +185,97 @@ Here is an example of the response
 | 1 | Customer | System Created By  | String |  |  |
 | 1 | Customer | System Modified At | DateTime |  |  |
 | 1 | Customer | System Modified By | String |  |  |
+
+
+
+## GET Ship To Address
+
+Retrieve the properties and relationships of a customer object for Business Central.
+
+### Http Request
+
+Replace the URL endpoint for Dynamics 365 Business Central depending on environment following the [guideline](#endpoints-businesscentralPrefix-structure).
+
+~~~ api
+businesscentralPrefix/shiptoAddresses
+~~~
+
+### Request Headers
+
+Header | Value |
+--- | --- |
+Authorization | Bearer {token}. Required.|
+
+### Request Body
+
+Do not supply a request body for this method.
+
+### Response
+
+Here is an example of the response
+
+```json
+{
+    "@odata.context": "https://api.businesscentral.dynamics.com/v2.0/bevicasaas.onmicrosoft.com/tvt_develop/api/tvisiontech/webbevica/v2.0/$metadata#companies(08f3eaa4-1d0f-ed11-90eb-0022480090f7)/shiptoAddresses",
+    "value": [
+        {
+            "@odata.etag": "W/\"JzIwOzE1NDE5MTg2OTI5MjUxNDc5OTYzMTswMDsn\"",
+            "systemId": "bfa77dc7-b6b6-ed11-9a88-000d3a86b91d",
+            "customerNo": "21233572",
+            "code": "DFREE",
+            "name": "Somadis",
+            "name2": "",
+            "address": "37, Rue El Wahda",
+            "address2": "",
+            "city": "AGDAL-RABAT",
+            "contact": "M. Syed ABBAS",
+            "phoneNo": "",
+            "shipmentMethodCode": "",
+            "shippingAgentCode": "",
+            "countryRegionCode": "MA",
+            "postCode": "MA-10100",
+            "county": "",
+            "eMail": "",
+            "shippingAgentServiceCode": "",
+            "serviceZoneCode": "",
+            "tvtDutyStatus": "DUTY FREE",
+            "systemCreatedAt": "2023-02-27T15:52:47.587Z",
+            "systemCreatedBy": "b6188cb8-d398-4a1c-8ec3-87ce63665e0b",
+            "systemModifiedAt": "2023-02-27T15:53:10.883Z",
+            "systemModifiedBy": "b6188cb8-d398-4a1c-8ec3-87ce63665e0b"
+        }
+    ]
+}    
+```
+
+### Ship to Address Fields
+
+| Relation | Source Table | Field Caption | Field Type | Field Length | Note |
+| ----------- | ----------- | ----------- | -------- | ---------- |---------- |
+| 1 | Ship-to Address | Customer No. | Code | 20 | |
+| 1 | Ship-to Address | Code | Code | 10 | |
+| 1 | Ship-to Address | Name | String | 100 | |
+| 1 | Ship-to Address | Name 2 | String | 50 | |
+| 1 | Ship-to Address | Address | String | 100 | |
+| 1 | Ship-to Address | Address 2 | String | 50 | |
+| 1 | Ship-to Address | City | String | 30 | |
+| 1 | Ship-to Address | Contact | String | 100 | |
+| 1 | Ship-to Address | Phone No. | string | 30 |  |
+| 1 | Ship-to Address | Shipment Method Code | string | 10 |  |
+| 1 | Ship-to Address | Shipping Agent Code | string | 10 |  |
+| 1 | Ship-to Address | Country/Region Code | string | 10 |  |
+| 1 | Ship-to Address | Post Code | string | 20 |  |
+| 1 | Ship-to Address | County | string | 30 |  |
+| 1 | Ship-to Address | E-Mail | string | 80 |  |
+| 1 | Ship-to Address | Shipping Agent Service Code | string | 10 |  |
+| 1 | Ship-to Address | Service Zone Code | string | 10 |  |
+| 1 | Ship-to Address | Shipping Agent Service Code | TVT Duty Status | 10 |  |
+| 1 | Ship-to Address | System Id | GUID |  |   |
+| 1 | Ship-to Address | System Created At | DateTime |  |  |
+| 1 | Ship-to Address | System Created By  | String |  |  |
+| 1 | Ship-to Address | System Modified At | DateTime |  |  |
+| 1 | Ship-to Address | System Modified By | String |  |  |
+
 
 ## GET Customer Ledger Entries
 
@@ -521,6 +556,8 @@ Retrieve the properties and relationships of a Web Order object for Business Cen
 Replace the URL endpoint for Dynamics 365 Business Central depending on environment following the [guideline](#endpoints-businesscentralPrefix-structure).
 
 ~~~ api
+POST
+
 businesscentralPrefix/webOrders
 ~~~
 
@@ -605,7 +642,7 @@ Here is an example of the response
             "orderId": "PFLOW997",
             "orderType": "WEB",
             "sellToCustomerNo": "1020000",
-            "customerEmail": "TChipamaunga@tvisiontech.co.uk",
+            "customerEmail": "",
             "sellToCustomerName": "",
             "sellToCustomerName2": "",
             "sellToCity": "",
@@ -766,7 +803,7 @@ Here is an example of the response
 | 1  | Web Order Header | Text 02 | Text | 50 | Web Specific |  |  |
 | 1  | Web Order Header | Boolean 02 | Boolean |  | Web Specific |  |  | -->
 
-## Create Web Lines
+## Create Web Order Lines
 
 Retrieve the properties and relationships of a Web Lines object for Business Central.
 
@@ -775,6 +812,8 @@ Retrieve the properties and relationships of a Web Lines object for Business Cen
 Replace the URL endpoint for Dynamics 365 Business Central depending on environment following the [guideline](#endpoints-businesscentralPrefix-structure).
 
 ~~~ api
+POST
+
 businesscentralPrefix/webOrderLines
 ~~~
 
@@ -1014,6 +1053,112 @@ Here is an example of the response
 
 ```json
 {
+    "@odata.context": "https://api.businesscentral.dynamics.com/v2.0/bevicasaas.onmicrosoft.com/tvt_develop/api/tvisiontech/webbevica/v2.0/$metadata#companies(08f3eaa4-1d0f-ed11-90eb-0022480090f7)/manifests",
+    "value": [
+        {
+            "@odata.etag": "W/\"JzIwOzExMzM2NDcyMjcxNjA4NTMxNTM3MTswMDsn\"",
+            "systemId": "4879745a-20ca-ed11-a7c9-00224800e466",
+            "no": "DMAN000001",
+            "address": "",
+            "address2": "",
+            "addressCode": "",
+            "city": "",
+            "contact": "",
+            "countryRegionCode": "",
+            "totalNetWeight": 0,
+            "totalGrossWeight": 0,
+            "totalEqCasesToMove": 0.5,
+            "status": "Open",
+            "shippingAgentCode": "DHL",
+            "shipmentMethodCode": "CIF",
+            "manifestType": "Purchase",
+            "description": "Test ",
+            "county": "",
+            "documentDate": "2023-03-15",
+            "finalDeliveryType": "Order Address",
+            "locationCode": "BLUE",
+            "logisticsDate": "0001-01-01",
+            "logisticsReference": "",
+            "logisticsStatus": "",
+            "noLines": 1,
+            "postCode": "",
+            "primaryVendorNo": "",
+            "primaryVendorName": "",
+            "shippingAgentServiceCode": "",
+            "type": "Inbound",
+            "systemCreatedAt": "2023-03-24T08:46:32.963Z",
+            "systemCreatedBy": "691db9f1-24f4-48ca-a179-a41eb57d7c00",
+            "systemModifiedAt": "2023-03-24T08:47:11.863Z",
+            "systemModifiedBy": "691db9f1-24f4-48ca-a179-a41eb57d7c00"
+        }
+    ]
+}
+```
+### Manifest Fields
+
+| Relation | Source Table | Field Caption | Field Type | Field Length | Note      |
+| ----------- | ----------- | ----------- | ---------- | ------------ |---------- |
+|  1          | TVT Manifest Header V2    | System Id | GUID |  |  |
+|  1          | TVT Manifest Header V2    | No.         |  Code    | 20           | |
+|  1          | TVT Manifest Header V2    | Address         |  String    | 100           | |
+|  1          | TVT Manifest Header V2    | Address 2         |  String    | 50           | |
+|  1          | TVT Manifest Header V2    | Address Code         |  Code    | 10            | |
+|  1          | TVT Manifest Header V2    | City         |  String    | 30           | |
+|  1          | TVT Manifest Header V2    | Contact         |  String    | 100            | |
+|  1          | TVT Manifest Header V2    | Country/Region Code         |  Date    |            | |
+|  1          | TVT Manifest Header V2    | Total Net Weight         |  Decimal    |            | |
+|  1          | TVT Manifest Header V2    | Total Gross Weight         |  Decimal    |            | |
+|  1          | TVT Manifest Header V2    | Total Eq. Cases to Move      |  Decimal    |            | |
+|  1          | TVT Manifest Header V2    | Shipping Agent Code      |  Code    | 10            | |
+|  1          | TVT Manifest Header V2    | Shipment Method Code        |  String    | 30           | |
+|  1          | TVT Manifest Header V2    | Manifest Type         |   Enum  |             | |
+|  1          | TVT Manifest Header V2    | Description         |  String    |  100         | |
+|  1          | TVT Manifest Header V2    | County       |  String    | 30           | |
+|  1          | TVT Manifest Header V2    | Document Date         |  Date    |            | |
+|  1          | TVT Manifest Header V2    | Final Delivery Type        |  Enum    | 50           | |
+|  1          | TVT Manifest Header V2    | Location Code      |  Code    | 20            | |
+|  1          | TVT Manifest Header V2    | Logistics Date         |  Date    | 30           | |
+|  1          | TVT Manifest Header V2    | Logistics Reference         |  String    | 100            | |
+|  1          | TVT Manifest Header V2    | Logistics Status        |  Code    |   10         | |
+|  1          | TVT Manifest Header V2    | No. Lines         |  Integer    |            | |
+|  1          | TVT Manifest Header V2    | Primary Vendor No.         |  Code    | 20           | |
+|  1          | TVT Manifest Header V2    | Primary Vendor Name        |  String    | 50           | |
+|  1          | TVT Manifest Header V2    | Shipping Agent Service Code'        |  Code    | 10            | |
+|  1          | TVT Manifest Header V2    | Type         |  Option    | 30           | |
+|  1          | TVT Manifest Header V2    | System Created At | DateTime |  |  |
+|  1          | TVT Manifest Header V2    | System Created By  | String |  |  |
+|  1          | TVT Manifest Header V2    | System Modified At | DateTime |  |  |
+|  1          | TVT Manifest Header V2    | System Modified By | String |  |  |
+
+
+## GET Manifest Lines
+
+Retrieve the properties and relationships of a Manifest object for Business Central.
+
+### Http Request
+
+Replace the URL endpoint for Dynamics 365 Business Central depending on environment following the [guideline](#endpoints-businesscentralPrefix-structure).
+
+~~~ api
+businesscentralPrefix/manifestsLines
+~~~
+
+### Request Headers
+
+Header | Value |
+--- | --- |
+Authorization | Bearer {token}. Required.|
+
+### Request Body
+
+Do not supply a request body for this method.
+
+### Response
+
+Here is an example of the response
+
+```json
+{
     "@odata.context": "https://api.businesscentral.dynamics.com/v2.0/bevicasaas.onmicrosoft.com/tvt_develop/api/tvisiontech/webbevica/v2.0/$metadata#companies(08f3eaa4-1d0f-ed11-90eb-0022480090f7)/manifestLines",
     "value": [
         {
@@ -1057,41 +1202,49 @@ Here is an example of the response
     ]
 }
 ```
-### Manifest Fields
-
+### Manifest Line Fields
 | Relation | Source Table | Field Caption | Field Type | Field Length | Note      |
 | ----------- | ----------- | ----------- | ---------- | ------------ |---------- |
-|  1          | TVT Manifest Header V2    | System Id | GUID |  |  |
-|  1          | TVT Manifest Header V2    | No.         |  Code    | 20           | |
-|  1          | TVT Manifest Header V2    | Address         |  String    | 100           | |
-|  1          | TVT Manifest Header V2    | Address 2         |  String    | 50           | |
-|  1          | TVT Manifest Header V2    | Address Code         |  Code    | 10            | |
-|  1          | TVT Manifest Header V2    | City         |  String    | 30           | |
-|  1          | TVT Manifest Header V2    | Contact         |  String    | 100            | |
-|  1          | TVT Manifest Header V2    | Country/Region Code         |  Date    |            | |
-|  1          | TVT Manifest Header V2    | Total Net Weight         |  Decimal    |            | |
-|  1          | TVT Manifest Header V2    | Total Gross Weight         |  Decimal    |            | |
-|  1          | TVT Manifest Header V2    | Total Eq. Cases to Move      |  Decimal    |            | |
-|  1          | TVT Manifest Header V2    | Shipping Agent Code      |  Code    | 10            | |
-|  1          | TVT Manifest Header V2    | Shipment Method Code        |  String    | 30           | |
-|  1          | TVT Manifest Header V2    | Manifest Type         |   Enum  |             | |
-|  1          | TVT Manifest Header V2    | Description         |  String    |  100         | |
-|  1          | TVT Manifest Header V2    | County       |  String    | 30           | |
-|  1          | TVT Manifest Header V2    | Document Date         |  Date    |            | |
-|  1          | TVT Manifest Header V2    | Final Delivery Type        |  Enum    | 50           | |
-|  1          | TVT Manifest Header V2    | Location Code      |  Code    | 20            | |
-|  1          | TVT Manifest Header V2    | Logistics Date         |  Date    | 30           | |
-|  1          | TVT Manifest Header V2    | Logistics Reference         |  String    | 100            | |
-|  1          | TVT Manifest Header V2    | Logistics Status        |  Code    |   10         | |
-|  1          | TVT Manifest Header V2    | No. Lines         |  Integer    | 20           | |
-|  1          | TVT Manifest Header V2    | Primary Vendor No.         |  Code    | 20           | |
-|  1          | TVT Manifest Header V2    | Primary Vendor Name        |  String    | 50           | |
-|  1          | TVT Manifest Header V2    | Shipping Agent Service Code'        |  Code    | 10            | |
-|  1          | TVT Manifest Header V2    | Type         |  Option    | 30           | |
-|  1          | TVT Manifest Header V2    | System Created At | DateTime |  |  |
-|  1          | TVT Manifest Header V2    | System Created By  | String |  |  |
-|  1          | TVT Manifest Header V2    | System Modified At | DateTime |  |  |
-|  1          | TVT Manifest Header V2    | System Modified By | String |  |  |
+|  1          | TVT Manifest Line V2    | System Id | GUID |  |  |
+|  1          | TVT Manifest Line V2    | Document No. | Code | 20 |  |
+|  1          | TVT Manifest Line V2    | Manifest No. | Code | 20 |  |
+|  1          | TVT Manifest Line V2    | Line No. | Integer |  |  |
+|  1          | TVT Manifest Line V2    | Duty Status | Code | 10 |  |
+|  1          | TVT Manifest Line V2    | Source No. | Code | 20 |  |
+|  1          | TVT Manifest Line V2    | Total Eq. Cases | Decimal | 20 |  |
+|  1          | TVT Manifest Line V2    | Document No. | Code | 20 |  |
+|  1          | TVT Manifest Line V2    | Manifest No.. | Code | 20 |  |
+|  1          | TVT Manifest Line V2    | Document No. | Code | 20 |  |
+|  1          | TVT Manifest Line V2    | Manifest No.. | Code | 20 |  |
+|  1          | TVT Manifest Line V2    | Shipping Agent Code      |  Code    | 10            | |
+|  1          | TVT Manifest Line V2    | Shipping Agent Service Code      |  Code    | 10            | |
+|  1          | TVT Manifest Line V2    | No. of Item Lines      |  Integer    |   | |
+|  1          | TVT Manifest Line V2    | Gross Weight     |  Decimal    |   | |
+|  1          | TVT Manifest Line V2    | Net Weight     |  Decimal    |   | |
+|  1          | TVT Manifest Line V2    |  Posted Document No. | Code | 20 |  |
+|  1          | TVT Manifest Line V2    |  Final Delivery Type| Enum |Order Address,Manifest To Address,Manifest From Address |  |
+|  1          | TVT Manifest Line V2    | To Address         |  String    | 100           | |
+|  1          | TVT Manifest Line V2    | To Address 2         |  String    | 50           | |
+|  1          | TVT Manifest Line V2    | To Address Code         |  Code    | 10            | |
+|  1          | TVT Manifest Line V2    | To City         |  String    | 30           | |
+|  1          | TVT Manifest Line V2    | To Contact         |  String    | 100            | |
+|  1          | TVT Manifest Line V2    | To Country/Region Code         |  Code    |   10         | |
+|  1          | TVT Manifest Line V2    | To County         |  String    | 100            | |
+|  1          | TVT Manifest Line V2    | From Address         |  String    | 100           | |
+|  1          | TVT Manifest Line V2    | From Address 2         |  String    | 50           | |
+|  1          | TVT Manifest Line V2    | From Address Code         |  Code    | 10            | |
+|  1          | TVT Manifest Line V2    | From City         |  String    | 30           | |
+|  1          | TVT Manifest Line V2    | From Contact         |  String    | 100            | |
+|  1          | TVT Manifest Line V2    | From Country/Region Code         |  Code    |   10         | |
+|  1          | TVT Manifest Line V2    | From County         |  String    | 100            | |
+|  1          | TVT Manifest Line V2    | Name        |  String    | 100            | |
+|  1          | TVT Manifest Line V2    | Name 2       |  String    | 50            | |
+|  1          | TVT Manifest Line V2    | From Post Code         |  Code    | 20            | |
+|  1          | TVT Manifest Line V2    | System Created At | DateTime |  |  |
+|  1          | TVT Manifest Line V2    | System Created By  | String |  |  |
+|  1          | TVT Manifest Line V2    | System Modified At | DateTime |  |  |
+|  1          | TVT Manifest Line V2    | System Modified By | String |  |  |
+
 
 ## GET Orders Status
 
