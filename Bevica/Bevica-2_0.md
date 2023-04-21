@@ -46,13 +46,13 @@ The articles in this section describe the key concepts and techniques for using 
 Common endpoint service
 
 ~~~ api
-https://api.businesscentral.dynamics.com/v2.0/<user domain name>/api/<API publisher>/<API group>/<API version>/companies(<company id>)/apiCustomer
+https://api.businesscentral.dynamics.com/v2.0/<user domain name>/api/<API publisher>/<API group>/<API version>/companies(<company id>)/Customer
 ~~~
 
 Sample
 
 ~~~ api
-https://api.businesscentral.dynamics.com/v2.0/bevicasaas.onmicrosoft.com/tvt_develop/api/tvisiontech/webbevica/v2.0/companies(08f3eaa4-1d0f-ed11-90eb-0022480090f7)/apiCustomer
+https://api.businesscentral.dynamics.com/v2.0/bevicasaas.onmicrosoft.com/tvt_develop/api/tvisiontech/webbevica/v2.0/companies(08f3eaa4-1d0f-ed11-90eb-0022480090f7)/Customer
 ~~~
 
 ## Endpoints businesscentralPrefix structure
@@ -68,7 +68,7 @@ Retrieve the properties and relationships of a customer object for Business Cent
 Replace the URL endpoint for Dynamics 365 Business Central depending on environment following the [guideline](#endpoints-businesscentralPrefix-structure).
 
 ~~~ api
-businesscentralPrefix/apiCustomers
+businesscentralPrefix/Customers
 ~~~
 
 ### Request Headers
