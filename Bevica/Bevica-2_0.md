@@ -8,7 +8,7 @@ The Bevica APIs documented below outline the interactions available to a third p
 
 All of our endpoints are secured so before you can begin to make calls to the API you will first need to obtain an access token.
 
-For more information on the business workflows that the APIs support, head to the [Guides](https://tvisiontech.freshdesk.com/) section.
+For more information on the business workflows that the APIs support, head to the [Guides](https://tvisiontechtechnology.freshdesk/) section.
 
 If you have any questions or feedback on the API reference, please reach out to our support.
 
